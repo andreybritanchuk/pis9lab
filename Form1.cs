@@ -16,5 +16,23 @@ namespace pis
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "1" && textBox2.Text == "1")
+            {
+                Form2 dlg = new Form2();
+                dlg.Show(this);
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+            }
+        }
     }
 }
