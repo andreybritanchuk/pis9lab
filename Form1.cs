@@ -27,6 +27,13 @@ namespace pis
             if (textBox1.Text == "1" && textBox2.Text == "1")
             {
                 Form2 dlg = new Form2();
+                dlg.textBox1.Text = "Autor";
+                dlg.Show(this);
+            }
+            if (textBox1.Text == "2" && textBox2.Text == "2")
+            {
+                Form2 dlg = new Form2();
+                dlg.textBox1.Text = "Guest";
                 dlg.Show(this);
             }
             else
