@@ -14,6 +14,7 @@ namespace pis
     {
         public Form3()
         {
+            Program.f1 = this;
             InitializeComponent();
         }
 
@@ -21,7 +22,7 @@ namespace pis
         {
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
-            
+
             dataGridView1.RowCount = 3;
             dataGridView1.ColumnCount = 12;
             dataGridView1.Rows[0].Cells[0].Value = Convert.ToString("Номер МК");
@@ -39,14 +40,100 @@ namespace pis
 
 
 
-            dataGridView1.Rows[1].Cells[0].Value = Convert.ToString("Акт 2");
-            dataGridView1.Rows[1].Cells[1].Value = Convert.ToString("г. Пермь");
-            dataGridView1.Rows[1].Cells[2].Value = Convert.ToString("Отделение №3");
+            dataGridView1.Rows[1].Cells[0].Value = Convert.ToString("1");
+            dataGridView1.Rows[1].Cells[1].Value = Convert.ToString("10.10.2021");
+            dataGridView1.Rows[1].Cells[2].Value = Convert.ToString("-");
+            dataGridView1.Rows[1].Cells[3].Value = Convert.ToString("-");
+            dataGridView1.Rows[1].Cells[4].Value = Convert.ToString("-");
+            dataGridView1.Rows[1].Cells[5].Value = Convert.ToString("1");
+            dataGridView1.Rows[1].Cells[6].Value = Convert.ToString("5");
+            dataGridView1.Rows[1].Cells[7].Value = Convert.ToString("6");
+            dataGridView1.Rows[1].Cells[8].Value = Convert.ToString("11");
+            dataGridView1.Rows[1].Cells[9].Value = Convert.ToString("Tyumen");
+            dataGridView1.Rows[1].Cells[10].Value = Convert.ToString("9.10.2021");
+            dataGridView1.Rows[1].Cells[11].Value = Convert.ToString("Catch");
+
 
             dataGridView1.Rows[2].Cells[0].Value = Convert.ToString("Акт 3");
             dataGridView1.Rows[2].Cells[1].Value = Convert.ToString("г. Тула");
             dataGridView1.Rows[2].Cells[2].Value = Convert.ToString("Отделение №1");
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form4 dlg = new Form4();
+            dlg.button1.Visible = false;
+            dlg.label15.Visible = false;
+            dlg.button5.Visible = false;
+            dlg.textBox1.ReadOnly = true;
+            dlg.textBox2.ReadOnly = true;
+            dlg.textBox3.ReadOnly = true;
+            dlg.textBox4.ReadOnly = true;
+            dlg.textBox5.ReadOnly = true;
+            dlg.textBox6.ReadOnly = true;
+            dlg.textBox7.ReadOnly = true;
+            dlg.textBox8.ReadOnly = true;
+            dlg.textBox9.ReadOnly = true;
+            dlg.textBox10.ReadOnly = true;
+            dlg.textBox11.ReadOnly = true;
+            dlg.textBox12.ReadOnly = true;
+            dlg.button3.Visible = false;
+
+            int index = dataGridView1.CurrentRow.Index;
+            dlg.textBox1.Text = Convert.ToString(dataGridView1.Rows[index].Cells[0].Value);
+            dlg.textBox2.Text = Convert.ToString(dataGridView1.Rows[index].Cells[1].Value);
+            dlg.textBox3.Text = Convert.ToString(dataGridView1.Rows[index].Cells[2].Value);
+            dlg.textBox4.Text = Convert.ToString(dataGridView1.Rows[index].Cells[3].Value);
+            dlg.textBox5.Text = Convert.ToString(dataGridView1.Rows[index].Cells[4].Value);
+            dlg.textBox6.Text = Convert.ToString(dataGridView1.Rows[index].Cells[5].Value);
+            dlg.textBox7.Text = Convert.ToString(dataGridView1.Rows[index].Cells[6].Value);
+            dlg.textBox8.Text = Convert.ToString(dataGridView1.Rows[index].Cells[7].Value);
+            dlg.textBox9.Text = Convert.ToString(dataGridView1.Rows[index].Cells[8].Value);
+            dlg.textBox10.Text = Convert.ToString(dataGridView1.Rows[index].Cells[9].Value);
+            dlg.textBox11.Text = Convert.ToString(dataGridView1.Rows[index].Cells[10].Value);
+            dlg.textBox12.Text = Convert.ToString(dataGridView1.Rows[index].Cells[11].Value);
+            dlg.Show(this);
+        }
+
+
+
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Form4 dlg = new Form4();
+            dlg.button3.Visible = true;
+            dlg.textBox13.Visible = false;
+            dlg.button5.Visible = false;
+            int index = dataGridView1.CurrentRow.Index;
+            dlg.textBox13.Text = Convert.ToString(index);
+            dlg.textBox1.Text = Convert.ToString(dataGridView1.Rows[index].Cells[0].Value);
+            dlg.textBox2.Text = Convert.ToString(dataGridView1.Rows[index].Cells[1].Value);
+            dlg.textBox3.Text = Convert.ToString(dataGridView1.Rows[index].Cells[2].Value);
+            dlg.textBox4.Text = Convert.ToString(dataGridView1.Rows[index].Cells[3].Value);
+            dlg.textBox5.Text = Convert.ToString(dataGridView1.Rows[index].Cells[4].Value);
+            dlg.textBox6.Text = Convert.ToString(dataGridView1.Rows[index].Cells[5].Value);
+            dlg.textBox7.Text = Convert.ToString(dataGridView1.Rows[index].Cells[6].Value);
+            dlg.textBox8.Text = Convert.ToString(dataGridView1.Rows[index].Cells[7].Value);
+            dlg.textBox9.Text = Convert.ToString(dataGridView1.Rows[index].Cells[8].Value);
+            dlg.textBox10.Text = Convert.ToString(dataGridView1.Rows[index].Cells[9].Value);
+            dlg.textBox11.Text = Convert.ToString(dataGridView1.Rows[index].Cells[10].Value);
+            dlg.textBox12.Text = Convert.ToString(dataGridView1.Rows[index].Cells[11].Value);
+            dlg.Show(this);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            int index = dataGridView1.CurrentRow.Index;
+            dataGridView1.Rows.RemoveAt(index);
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            Form4 dlg = new Form4();
+            dlg.button3.Visible = false;
+            dlg.button5.Visible = true;
+            dlg.Show(this);
         }
     }
 }
