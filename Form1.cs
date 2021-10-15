@@ -17,23 +17,18 @@ namespace pis
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "1" && textBox2.Text == "1")
             {
                 Form2 dlg = new Form2();
-                dlg.textBox1.Text = "Autor";
+                dlg.role = "Autor";
                 dlg.Show(this);
             }
-            if (textBox1.Text == "2" && textBox2.Text == "2")
+            else if (textBox1.Text == "2" && textBox2.Text == "2")
             {
                 Form2 dlg = new Form2();
-                dlg.textBox1.Text = "Guest";
+                dlg.role = "Guest";
                 dlg.Show(this);
             }
             else

@@ -12,6 +12,7 @@ namespace pis
 {
     public partial class Form2 : Form
     {
+        public string role;
         public Form2()
         {
             InitializeComponent();
@@ -20,12 +21,12 @@ namespace pis
         private void реестрАктовОтловаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            if (textBox1.Text == "Autor")
+            if (role == "Autor")
             {
                 Form3 dlg = new Form3();
                 dlg.Show(this);
             }
-            if (textBox1.Text == "Guest")
+            if (role == "Guest")
             {
                 Form3 dlg = new Form3();
                 dlg.button2.Visible = false;
