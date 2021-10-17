@@ -30,6 +30,18 @@ namespace pis
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,18 +51,6 @@ namespace pis
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,79 @@ namespace pis
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(972, 344);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Номер МК";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 78;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Дата заключения МК";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 114;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Муниципальное образование";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 165;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "ОМСУ";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 64;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Исполнитель МК";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 108;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Номер акта отлова";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 119;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Кол-во отловленных собак";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 153;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Кол-во отловленных кошек";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 155;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Кол-во отловленных животных";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 171;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Населённый пункт";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 116;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Дата отлова";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 88;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Цель отлова";
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 88;
             // 
             // button1
             // 
@@ -187,78 +260,6 @@ namespace pis
             this.textBox1.Size = new System.Drawing.Size(222, 20);
             this.textBox1.TabIndex = 9;
             // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Цель отлова";
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 88;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Дата отлова";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 88;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Населённый пункт";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 116;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Кол-во отловленных животных";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 171;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Кол-во отловленных кошек";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 155;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Кол-во отловленных собак";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 153;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Номер акта отлова";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 119;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Исполнитель МК";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 108;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "ОМСУ";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 64;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Муниципальное образование";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 165;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Дата заключения МК";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 114;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Номер МК";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 78;
-            // 
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -309,6 +310,7 @@ namespace pis
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button button3;
         public System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -321,6 +323,5 @@ namespace pis
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.Button button7;
     }
 }

@@ -65,11 +65,11 @@ namespace pis
             this.button5 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -372,6 +372,17 @@ namespace pis
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView1.Size = new System.Drawing.Size(541, 150);
             this.dataGridView1.TabIndex = 33;
+            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(478, 31);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 28);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Экспорт в Word";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -401,16 +412,6 @@ namespace pis
             this.Column4.HeaderText = "";
             this.Column4.Name = "Column4";
             this.Column4.Width = 101;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(478, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 28);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Экспорт в Word";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form4
             // 
@@ -495,11 +496,11 @@ namespace pis
         public System.Windows.Forms.Button button5;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        public System.Windows.Forms.Button button2;
     }
 }

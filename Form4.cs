@@ -25,7 +25,7 @@ namespace pis
             dataGridView1.Rows[1].Cells[1].Value = "Файл2";
             dataGridView1.Rows[1].Cells[2].Value = "20.04.2021";
             dataGridView1.Rows[1].Cells[3].Value = "Удалить";
-
+            dataGridView1.Columns[3].DefaultCellStyle.ForeColor = Color.Red;
         }
 
 
@@ -90,6 +90,19 @@ namespace pis
         {
             dataGridView1.ClearSelection();
             label13.Focus();
+        }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = dataGridView1.Columns[e.ColumnIndex].Index;
+            if (i != 1 && i != 3)
+            {
+                dataGridView1.Cursor = Cursors.Default;
+            }
+            else
+            {
+                dataGridView1.Cursor = Cursors.Hand;
+            }
         }
     }
 }

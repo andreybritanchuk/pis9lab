@@ -12,10 +12,17 @@ namespace pis
 {
     public partial class Form3 : Form
     {
+        ContextMenuStrip m = new ContextMenuStrip();
+        public int column;
         public Form3()
         {
             Program.f1 = this;
             InitializeComponent();
+            Image img = null;
+            m.Items.Add("Задать фильтр", img, new EventHandler(ContextMenuClick));
+            m.Items.Add("Задать условия сортировки", img, new EventHandler(ContextMenuClick));
+            dataGridView1.ContextMenuStrip = m;
+            
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -23,7 +30,7 @@ namespace pis
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
 
-            dataGridView1.RowCount = 3;
+            dataGridView1.RowCount = 2;
             dataGridView1.ColumnCount = 12;
             //dataGridView1.Rows[0].Cells[0].Value = Convert.ToString("Номер МК");
             //dataGridView1.Rows[0].Cells[1].Value = Convert.ToString("Дата заключения МК");
@@ -64,6 +71,7 @@ namespace pis
         {
             Form4 dlg = new Form4();
             dlg.button1.Visible = false;
+            dlg.dataGridView1.Columns[3].Visible = false;
             //dlg.label15.Visible = false;
             dlg.button5.Visible = false;
             dlg.textBox1.ReadOnly = true;
@@ -102,6 +110,7 @@ namespace pis
         private void button2_Click_1(object sender, EventArgs e)
         {
             Form4 dlg = new Form4();
+            dlg.dataGridView1.Columns[3].Visible = true;
             dlg.button3.Visible = true;
             dlg.button5.Visible = false;
             int index = dataGridView1.CurrentRow.Index;
@@ -130,6 +139,7 @@ namespace pis
         private void button4_Click_1(object sender, EventArgs e)
         {
             Form4 dlg = new Form4();
+            dlg.dataGridView1.Columns[3].Visible = true;
             dlg.button3.Visible = false;
             dlg.button5.Visible = true;
             dlg.Show(this);
@@ -138,6 +148,26 @@ namespace pis
         private void Form3_Shown(object sender, EventArgs e)
         {
             dataGridView1.ClearSelection();
+        }
+
+        private void ContextMenuClick(object sender, EventArgs e)
+        {
+            if (sender.Equals(m.Items[0]))
+            {
+                Form5 dlg = new Form5();
+                dlg.label1.Text = dataGridView1.Columns[column].HeaderText;
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    dlg.listBox1.Items.Add(dataGridView1.Rows[i].Cells[column].Value.ToString());
+                }
+                dlg.Show();
+            }
+            if (sender.Equals(m.Items[1])) MessageBox.Show("Задать условия сортировки");
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            column = e.ColumnIndex;
         }
     }
 }
