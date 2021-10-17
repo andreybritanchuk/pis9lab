@@ -12,15 +12,25 @@ namespace pis
 {
     public partial class Form4 : Form
     {
+        public int index;
         public Form4()
         {
             InitializeComponent();
+            dataGridView1.RowCount = 2;
+            dataGridView1.Rows[0].Cells[0].Value = "0";
+            dataGridView1.Rows[0].Cells[1].Value = "Файл1";
+            dataGridView1.Rows[0].Cells[2].Value = "20.04.2021";
+            dataGridView1.Rows[0].Cells[3].Value = "Удалить";
+            dataGridView1.Rows[1].Cells[0].Value = "0";
+            dataGridView1.Rows[1].Cells[1].Value = "Файл2";
+            dataGridView1.Rows[1].Cells[2].Value = "20.04.2021";
+            dataGridView1.Rows[1].Cells[3].Value = "Удалить";
+
         }
 
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int index = Convert.ToInt32(textBox13.Text);
             Program.f1.dataGridView1.Rows[index].Cells[0].Value = textBox1.Text;
             Program.f1.dataGridView1.Rows[index].Cells[1].Value = textBox2.Text;
             Program.f1.dataGridView1.Rows[index].Cells[2].Value = textBox3.Text;
@@ -74,6 +84,12 @@ namespace pis
         private void button4_Click_1(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Form4_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            label13.Focus();
         }
     }
 }

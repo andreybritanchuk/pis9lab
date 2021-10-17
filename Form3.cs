@@ -64,7 +64,7 @@ namespace pis
         {
             Form4 dlg = new Form4();
             dlg.button1.Visible = false;
-            dlg.label15.Visible = false;
+            //dlg.label15.Visible = false;
             dlg.button5.Visible = false;
             dlg.textBox1.ReadOnly = true;
             dlg.textBox2.ReadOnly = true;
@@ -103,10 +103,9 @@ namespace pis
         {
             Form4 dlg = new Form4();
             dlg.button3.Visible = true;
-            dlg.textBox13.Visible = false;
             dlg.button5.Visible = false;
             int index = dataGridView1.CurrentRow.Index;
-            dlg.textBox13.Text = Convert.ToString(index);
+            dlg.index= index;
             dlg.textBox1.Text = Convert.ToString(dataGridView1.Rows[index].Cells[0].Value);
             dlg.textBox2.Text = Convert.ToString(dataGridView1.Rows[index].Cells[1].Value);
             dlg.textBox3.Text = Convert.ToString(dataGridView1.Rows[index].Cells[2].Value);
@@ -134,6 +133,11 @@ namespace pis
             dlg.button3.Visible = false;
             dlg.button5.Visible = true;
             dlg.Show(this);
+        }
+
+        private void Form3_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
     }
 }
