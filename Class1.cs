@@ -33,6 +33,22 @@ namespace pis
             return null;
         }
 
+        public void LogIn(string login, string password)
+        { 
+            
+        }
 
+        public void AddActCard(ActCard actCard)
+        { 
+            
+        }
+
+        public void DeleteActCard(long idCard)
+        { 
+            
+        }
     }
+
+    class ActCard
+    { }
 }
