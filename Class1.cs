@@ -38,7 +38,7 @@ namespace pis
             
         }
 
-        public void AddActCard(ActCard actCard)
+        public void AddActCard(string[] actCardData)
         { 
             
         }
@@ -48,7 +48,4 @@ namespace pis
             
         }
     }
-
-    class ActCard
-    { }
 }
