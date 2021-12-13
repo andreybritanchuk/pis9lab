@@ -47,5 +47,20 @@ namespace pis
         { 
             
         }
+        
+         public void UpdateActCard(int idCard, string[] actCardData)
+        {
+
+        }
+
+        public void AddFile(string[] fileData)
+        {
+
+        }
+
+        public void DeleteFile(int idCard)
+        {
+
+        }
     }
 }
