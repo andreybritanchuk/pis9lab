@@ -8,12 +8,12 @@ namespace pis
 {
     class Controller
     {
-        public void choiseElement(int[] idCard)
+        public void ExpotrExcel(int[] idCard)
         {
 
         }
 
-        public void choiseElementForWord(int idCard)
+        public void ExportWord(int idCard)
         {
 
         }
