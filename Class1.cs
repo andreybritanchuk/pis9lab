@@ -8,7 +8,7 @@ namespace pis
 {
     class Controller
     {
-        public void ExpotrExcel(int[] idCard, string path)
+        public void ExportExcel(int[] idCard, string path)
         {
 
         }
@@ -69,6 +69,11 @@ namespace pis
         }
         
          public void OpenNewActCard()
+        { 
+            
+        }
+        
+         public void SelctActCardToDelete(int idCard)
         { 
             
         }
