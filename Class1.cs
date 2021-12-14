@@ -53,12 +53,12 @@ namespace pis
 
         }
 
-        public void AddFile(string[] fileData)
+        public void AddFile(int idCard, string[] fileData)
         {
 
         }
 
-        public void DeleteFile(int idCard)
+        public void DeleteFile(int idCard, string[] fileData)
         {
 
         }
