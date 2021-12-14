@@ -62,5 +62,15 @@ namespace pis
         {
 
         }
+        
+         public void SelctActCardToUpdate(int idCard)
+        { 
+            
+        }
+        
+         public void OpenNewActCard()
+        { 
+            
+        }
     }
 }
