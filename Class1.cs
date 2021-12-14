@@ -58,7 +58,7 @@ namespace pis
 
         }
 
-        public void DeleteFile(int idCard, string[] fileData)
+        public void DeleteFile(int idCard, int fileID)
         {
 
         }
