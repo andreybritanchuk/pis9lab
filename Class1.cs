@@ -53,7 +53,7 @@ namespace pis
 
         }
 
-        public void AddFile(int idCard, bite[] fileData)
+        public void AddFile(int idCard, byte[] fileData)
         {
 
         }
