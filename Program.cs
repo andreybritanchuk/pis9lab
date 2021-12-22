@@ -8,7 +8,6 @@ namespace pis
 {
     static class Program
     {
-        public static Form3 f1;
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
