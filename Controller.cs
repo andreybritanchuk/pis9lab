@@ -10,17 +10,17 @@ namespace pis
     {
         public static User LogIn(string login, string password)
         {
-            return null;
+            return User.LogIn(login, password);
         }
 
         public static Card[] openRegistry(string filter="", string sorter="")
         {
-            return null;
+            return Card.openRegistry(filter, sorter);
         }
 
         public static Card openCard(int idCard)
         {
-            return null;
+            return Card.openCard(idCard);
         }
 
         public static bool OpenNewActCard()
@@ -28,49 +28,49 @@ namespace pis
             return true;
         }
 
-        public static bool SelctActCardToUpdate(int idCard)
+        public static bool SelectActCardToUpdate(int idCard)
         {
             return true;
         }
 
-        public static bool SelctActCardToDelete(int idCard)
+        public static bool SelectActCardToDelete(int idCard)
         {
             return true;
         }
 
         public static Card AddActCard(string[] actCardData)
         {
-            return null;
+            return Card.AddActCard(actCardData);
         }
 
         public static Card UpdateActCard(int idCard, string[] actCardData)
         {
-            return null;
+            return Card.UpdateActCard(idCard, actCardData);
         }
 
         public static void DeleteActCard(long idCard)
-        { 
-            
+        {
+            Card.DeleteActCard(idCard);
         }
 
         public static Card AddFile(int idCard, byte[] fileData)
         {
-            return null;
+            return Card.AddFile(idCard, fileData);
         }
 
         public static Card DeleteFile(int idCard, int fileID)
         {
-            return null;
+            return Card.DeleteFile(idCard, fileID);
         }
 
         public static void ExportExcel(int[] idCard, string path)
         {
-
+            Export.ExportExcel(idCard, path);
         }
 
         public static void ExportWord(int idCard, string path)
         {
-
+            Export.ExportWord(idCard, path);
         }
     }
 }
