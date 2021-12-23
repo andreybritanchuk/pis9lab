@@ -197,7 +197,6 @@ namespace pis
             // 
             this.textBox6.Location = new System.Drawing.Point(316, 298);
             this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(293, 24);
             this.textBox6.TabIndex = 17;
             // 
@@ -374,6 +373,8 @@ namespace pis
             this.button2.TabIndex = 34;
             this.button2.Text = "Экспорт в Word";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // comboBox1
             // 
