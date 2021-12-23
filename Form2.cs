@@ -21,14 +21,14 @@ namespace pis
         private void реестрАктовОтловаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 form = new Form3();
-            if (role != "оператор по отлову")
+            if (role != "Оператор по отлову")
             {
                 form.button2.Visible = false;
                 form.button3.Visible = false;
                 form.button4.Visible = false;
             }
-            form.Show(this);
-            
+            Hide();
+            form.ShowDialog();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

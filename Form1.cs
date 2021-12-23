@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace pis
 {
@@ -19,28 +20,18 @@ namespace pis
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if (textBox1.Text == "1" && textBox2.Text == "1")
-            //{
-            //    Form2 dlg = new Form2();
-            //    dlg.role = "Autor";
-            //    dlg.Show(this);
-            //}
-            //else if (textBox1.Text == "2" && textBox2.Text == "2")
-            //{
-            //    Form2 dlg = new Form2();
-            //    dlg.role = "Guest";
-            //    dlg.Show(this);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Неверный логин или пароль");
-            //}
-            var user=Controller.LogIn(textBox1.Text, textBox2.Text);
+            string connectionString = "Data Source = DESKTOP-A8G14L1\\SQLEXPRESS;" +
+                "Initial Catalog = Реестр актов отлова; Integrated Security = True; " +
+                "multipleactiveresultsets=True;";
+            Controller.connect = new SqlConnection(connectionString);
+
+            var user =Controller.LogIn(textBox1.Text, textBox2.Text);
             if (user != null)
             {
                 Form2 form = new Form2();
                 form.role = user.role;
-                form.Show(this);
+                Hide();
+                form.ShowDialog();
             }
             else MessageBox.Show("Неверный логин или пароль");
         }

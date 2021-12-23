@@ -29,11 +29,11 @@ namespace pis
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,17 +46,11 @@ namespace pis
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -65,11 +59,17 @@ namespace pis
             this.button5 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker11 = new System.Windows.Forms.DateTimePicker();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +77,7 @@ namespace pis
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(64, 87);
+            this.label1.Location = new System.Drawing.Point(64, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 0;
@@ -87,7 +87,7 @@ namespace pis
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(64, 127);
+            this.label2.Location = new System.Drawing.Point(64, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 18);
             this.label2.TabIndex = 1;
@@ -97,7 +97,7 @@ namespace pis
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(64, 167);
+            this.label3.Location = new System.Drawing.Point(64, 179);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 18);
             this.label3.TabIndex = 2;
@@ -107,7 +107,7 @@ namespace pis
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(64, 206);
+            this.label4.Location = new System.Drawing.Point(64, 218);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 18);
             this.label4.TabIndex = 3;
@@ -117,7 +117,7 @@ namespace pis
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(64, 247);
+            this.label5.Location = new System.Drawing.Point(64, 259);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 18);
             this.label5.TabIndex = 4;
@@ -127,7 +127,7 @@ namespace pis
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(64, 287);
+            this.label6.Location = new System.Drawing.Point(64, 299);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(127, 18);
             this.label6.TabIndex = 5;
@@ -137,7 +137,7 @@ namespace pis
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(64, 327);
+            this.label7.Location = new System.Drawing.Point(64, 339);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(179, 18);
             this.label7.TabIndex = 6;
@@ -147,7 +147,7 @@ namespace pis
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(64, 367);
+            this.label8.Location = new System.Drawing.Point(64, 379);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(184, 18);
             this.label8.TabIndex = 7;
@@ -157,7 +157,7 @@ namespace pis
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(64, 407);
+            this.label9.Location = new System.Drawing.Point(64, 419);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(207, 18);
             this.label9.TabIndex = 8;
@@ -167,7 +167,7 @@ namespace pis
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(64, 447);
+            this.label10.Location = new System.Drawing.Point(64, 459);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(127, 18);
             this.label10.TabIndex = 9;
@@ -177,7 +177,7 @@ namespace pis
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(64, 487);
+            this.label11.Location = new System.Drawing.Point(64, 504);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(84, 18);
             this.label11.TabIndex = 10;
@@ -187,92 +187,51 @@ namespace pis
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(64, 527);
+            this.label12.Location = new System.Drawing.Point(64, 540);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(87, 18);
             this.label12.TabIndex = 11;
             this.label12.Text = "Цель отлова";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(316, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(293, 24);
-            this.textBox1.TabIndex = 12;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(316, 126);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(293, 24);
-            this.textBox2.TabIndex = 13;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(316, 166);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(293, 24);
-            this.textBox3.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(316, 206);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(293, 24);
-            this.textBox4.TabIndex = 15;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(316, 246);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(293, 24);
-            this.textBox5.TabIndex = 16;
-            // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(316, 286);
+            this.textBox6.Location = new System.Drawing.Point(316, 298);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(293, 24);
             this.textBox6.TabIndex = 17;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(316, 326);
+            this.textBox7.Location = new System.Drawing.Point(316, 338);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(293, 24);
             this.textBox7.TabIndex = 18;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(316, 366);
+            this.textBox8.Location = new System.Drawing.Point(316, 378);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(293, 24);
             this.textBox8.TabIndex = 19;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(316, 406);
+            this.textBox9.Location = new System.Drawing.Point(316, 418);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(293, 24);
             this.textBox9.TabIndex = 20;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(316, 446);
+            this.textBox10.Location = new System.Drawing.Point(316, 458);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(293, 24);
             this.textBox10.TabIndex = 21;
             // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(316, 486);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(293, 24);
-            this.textBox11.TabIndex = 22;
-            // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(316, 526);
+            this.textBox12.Location = new System.Drawing.Point(316, 539);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(293, 24);
             this.textBox12.TabIndex = 23;
@@ -296,6 +255,7 @@ namespace pis
             this.button1.TabIndex = 26;
             this.button1.Text = "Загрузить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button3
@@ -307,6 +267,7 @@ namespace pis
             this.button3.TabIndex = 28;
             this.button3.Text = "Сохранить";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
@@ -329,6 +290,7 @@ namespace pis
             this.button5.TabIndex = 30;
             this.button5.Text = "Добавить";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // label15
@@ -343,8 +305,8 @@ namespace pis
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
@@ -355,39 +317,29 @@ namespace pis
             this.Column2,
             this.Column3,
             this.Column4});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(68, 641);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView1.Size = new System.Drawing.Size(541, 150);
             this.dataGridView1.TabIndex = 33;
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(478, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 28);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Экспорт в Word";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // Column1
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -395,8 +347,8 @@ namespace pis
             // 
             // Column2
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column2.HeaderText = "Имя файла";
             this.Column2.Name = "Column2";
             this.Column2.Width = 250;
@@ -413,6 +365,64 @@ namespace pis
             this.Column4.Name = "Column4";
             this.Column4.Width = 101;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(478, 31);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 28);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Экспорт в Word";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(316, 94);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(293, 25);
+            this.comboBox1.TabIndex = 39;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // dateTimePicker11
+            // 
+            this.dateTimePicker11.Location = new System.Drawing.Point(316, 499);
+            this.dateTimePicker11.Name = "dateTimePicker11";
+            this.dateTimePicker11.Size = new System.Drawing.Size(293, 24);
+            this.dateTimePicker11.TabIndex = 40;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(316, 137);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(293, 24);
+            this.textBox2.TabIndex = 41;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(316, 177);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(293, 24);
+            this.textBox3.TabIndex = 42;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(316, 216);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(293, 24);
+            this.textBox4.TabIndex = 43;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(316, 257);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(293, 24);
+            this.textBox5.TabIndex = 44;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -420,6 +430,12 @@ namespace pis
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(0, 880);
             this.ClientSize = new System.Drawing.Size(673, 611);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.dateTimePicker11);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label15);
@@ -429,17 +445,11 @@ namespace pis
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -457,6 +467,7 @@ namespace pis
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Карточка акта отлова";
+            this.Load += new System.EventHandler(this.Form4_Load);
             this.Shown += new System.EventHandler(this.Form4_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -478,17 +489,11 @@ namespace pis
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.TextBox textBox6;
         public System.Windows.Forms.TextBox textBox7;
         public System.Windows.Forms.TextBox textBox8;
         public System.Windows.Forms.TextBox textBox9;
         public System.Windows.Forms.TextBox textBox10;
-        public System.Windows.Forms.TextBox textBox11;
         public System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.Button button3;
@@ -502,5 +507,11 @@ namespace pis
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.DateTimePicker dateTimePicker11;
+        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.TextBox textBox4;
+        public System.Windows.Forms.TextBox textBox5;
     }
 }

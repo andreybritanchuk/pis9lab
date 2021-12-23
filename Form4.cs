@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace pis
 {
@@ -16,72 +17,67 @@ namespace pis
         public Form4()
         {
             InitializeComponent();
-            dataGridView1.RowCount = 2;
-            dataGridView1.Rows[0].Cells[0].Value = "0";
-            dataGridView1.Rows[0].Cells[1].Value = "Файл1";
-            dataGridView1.Rows[0].Cells[2].Value = "20.04.2021";
-            dataGridView1.Rows[0].Cells[3].Value = "Удалить";
-            dataGridView1.Rows[1].Cells[0].Value = "0";
-            dataGridView1.Rows[1].Cells[1].Value = "Файл2";
-            dataGridView1.Rows[1].Cells[2].Value = "20.04.2021";
-            dataGridView1.Rows[1].Cells[3].Value = "Удалить";
-            dataGridView1.Columns[3].DefaultCellStyle.ForeColor = Color.Red;
+            comboBox1.Items.AddRange(GetValues("municipal_contract", "id_mc"));
         }
 
-
-        private void button3_Click(object sender, EventArgs e)
+        public string[] GetValues(string tableName, string columnName)
         {
-            //Program.f1.dataGridView1.Rows[index].Cells[0].Value = textBox1.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[1].Value = textBox2.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[2].Value = textBox3.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[3].Value = textBox4.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[4].Value = textBox5.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[5].Value = textBox6.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[6].Value = textBox7.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[7].Value = textBox8.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[8].Value = textBox9.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[9].Value = textBox10.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[10].Value = textBox11.Text;
-            //Program.f1.dataGridView1.Rows[index].Cells[11].Value = textBox12.Text;
-            //if (MessageBox.Show("Изменения сохранены") == DialogResult.OK)
-            //{
-            //    Close();
-            //}
-        }
+            Controller.connect.Open();
 
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            //Program.f1.dataGridView1.Rows.Add(
-            //textBox1.Text,
-            //textBox2.Text,
-            //textBox3.Text,
-            //textBox4.Text,
-            //textBox5.Text,
-            //textBox6.Text,
-            //textBox7.Text,
-            //textBox8.Text,
-            //textBox9.Text,
-            //textBox10.Text,
-            //textBox11.Text,
-            //textBox12.Text
-            //);
-            //if (MessageBox.Show("Изменения сохранены") == DialogResult.OK)
-            //{
-            //    Close();
-            //}
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            OpenFileDialog OPF = new OpenFileDialog();
-            if (OPF.ShowDialog() == DialogResult.OK)
+            string sql1 = @"select " + columnName + " from " + tableName;
+            SqlCommand command = Controller.connect.CreateCommand();
+            command.CommandText = sql1;
+            SqlDataReader result = command.ExecuteReader();
+            var data = new List<string>();
+            while (result.Read())
             {
-                MessageBox.Show(OPF.FileName);
+                data.Add(result.GetValue(0).ToString());
+            }
+
+            Controller.connect.Close();
+
+            return data.ToArray();
+        }
+
+        private void button3_Click(object sender, EventArgs e) //изменение
+        {
+            var idCard = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value);
+            var actCardData = new List<string>();
+            actCardData.Add(comboBox1.Text);
+            actCardData.Add(textBox2.Text);
+            actCardData.Add(textBox3.Text);
+            actCardData.Add(textBox4.Text);
+            actCardData.Add(textBox5.Text);
+            actCardData.Add(textBox6.Text);
+            actCardData.Add(textBox7.Text);
+            actCardData.Add(textBox8.Text);
+            actCardData.Add(textBox9.Text);
+            actCardData.Add(textBox10.Text);
+            actCardData.Add(dateTimePicker11.Text);
+            actCardData.Add(textBox12.Text);
+            Controller.UpdateActCard(idCard, actCardData.ToArray());
+            if (MessageBox.Show("Изменения сохранены") == DialogResult.OK)
+            {
+                Close();
             }
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
+
+        private void button5_Click_1(object sender, EventArgs e) //добавление
+        {
+            if (MessageBox.Show("Изменения сохранены") == DialogResult.OK)
+            {
+                Close();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e) //загрузить файлы
+        {
+            var idCard = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value);
+            Controller.AddFile(idCard, new byte[0]);
+        }
+
+        private void button4_Click_1(object sender, EventArgs e) //закрыть
         {
             Close();
         }
@@ -103,6 +99,46 @@ namespace pis
             {
                 dataGridView1.Cursor = Cursors.Hand;
             }
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            dataGridView1.RowCount = 2;
+
+            if (!button5.Visible) // просмотр или изменение
+            {
+                dataGridView1.Rows[0].Cells[0].Value = "0";
+                dataGridView1.Rows[0].Cells[1].Value = "Файл1";
+                dataGridView1.Rows[0].Cells[2].Value = dateTimePicker11.Value.ToShortDateString();
+                dataGridView1.Rows[1].Cells[0].Value = "0";
+                dataGridView1.Rows[1].Cells[1].Value = "Файл2";
+                dataGridView1.Rows[1].Cells[2].Value = dateTimePicker11.Value.ToShortDateString();
+            }
+
+            if (button3.Visible) //изменение
+            {
+                dataGridView1.Rows[0].Cells[3].Value = "Удалить";
+                dataGridView1.Rows[1].Cells[3].Value = "Удалить";
+                dataGridView1.Columns[3].DefaultCellStyle.ForeColor = Color.Red;
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Controller.connect.Open();
+            string sql1 = @"select* from mcTable where id_mc="+comboBox1.SelectedItem.ToString();
+            SqlCommand command = Controller.connect.CreateCommand();
+            command.CommandText = sql1;
+            SqlDataReader result = command.ExecuteReader();
+            var data = new List<string>();
+            while (result.Read())
+            {
+                textBox2.Text = Convert.ToDateTime(result.GetValue(1)).ToShortDateString();
+                textBox3.Text = result.GetValue(2).ToString();
+                textBox4.Text = result.GetValue(3).ToString();
+                textBox5.Text = result.GetValue(4).ToString();
+            }
+            Controller.connect.Close();
         }
     }
 }

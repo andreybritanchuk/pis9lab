@@ -57,6 +57,10 @@ namespace pis
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -77,83 +81,96 @@ namespace pis
             this.dataGridView1.Location = new System.Drawing.Point(9, 113);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(972, 344);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Номер МК";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 78;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Дата заключения МК";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 114;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Муниципальное образование";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Width = 165;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "ОМСУ";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Width = 64;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Исполнитель МК";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.Width = 108;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Номер акта отлова";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.Width = 119;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "Кол-во отловленных собак";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             this.Column7.Width = 153;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "Кол-во отловленных кошек";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             this.Column8.Width = 155;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "Кол-во отловленных животных";
             this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             this.Column9.Width = 171;
             // 
             // Column10
             // 
             this.Column10.HeaderText = "Населённый пункт";
             this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             this.Column10.Width = 116;
             // 
             // Column11
             // 
             this.Column11.HeaderText = "Дата отлова";
             this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
             this.Column11.Width = 88;
             // 
             // Column12
             // 
             this.Column12.HeaderText = "Цель отлова";
             this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
             this.Column12.Width = 88;
             // 
             // button1
@@ -270,6 +287,7 @@ namespace pis
             this.button7.TabIndex = 10;
             this.button7.Text = "Экспорт в Exel";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form3
             // 
@@ -292,7 +310,6 @@ namespace pis
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Реестр актов отлова";
             this.Load += new System.EventHandler(this.Form3_Load);
-            this.Shown += new System.EventHandler(this.Form3_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

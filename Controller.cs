@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace pis
 {
     class Controller
     {
+        static public SqlConnection connect;
+
         public static User LogIn(string login, string password)
         {
             return User.LogIn(login, password);
