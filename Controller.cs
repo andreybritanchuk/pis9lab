@@ -51,7 +51,7 @@ namespace pis
             return Card.UpdateActCard(idCard, actCardData);
         }
 
-        public static void DeleteActCard(long idCard)
+        public static void DeleteActCard(int idCard)
         {
             Card.DeleteActCard(idCard);
         }

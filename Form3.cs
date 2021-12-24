@@ -12,20 +12,27 @@ namespace pis
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        public Form2 form2;
+        public Form3(Form2 form)
         {
             InitializeComponent();
-
+            form2 = form;
         }
 
         private void Form3_Load(object sender, EventArgs e) //открытие реестра
         {
+            openRegistry(this);
+        }
+
+        public static void openRegistry(Form3 form)
+        {
+            form.dataGridView1.Rows.Clear();
             var cards = Controller.openRegistry();
             foreach (var card in cards)
             {
-                dataGridView1.Rows.Add(card.idMC, card.datemc.ToShortDateString(), card.municipality,
+                form.dataGridView1.Rows.Add(card.idMC, card.datemc.ToShortDateString(), card.municipality,
                     card.localGovernmentBody, card.executor, card.idCard, card.numberdog,
-                    card.numbercat, card.numberanimal, card.locality, 
+                    card.numbercat, card.numberanimal, card.locality,
                     card.date_trapping.ToShortDateString(), card.purpose);
             }
         }
@@ -34,7 +41,7 @@ namespace pis
         {
             var idCard = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value);
             var card=Controller.openCard(idCard);
-            Form4 form = new Form4();
+            Form4 form = new Form4(this);
             form.comboBox1.Text = card.idMC.ToString();
             form.textBox2.Text = card.datemc.ToShortDateString();
             form.textBox3.Text = card.municipality.ToString();
@@ -48,7 +55,10 @@ namespace pis
             form.dateTimePicker11.Value = card.date_trapping;
             form.dateTimePicker11.Text = card.date_trapping.ToShortDateString();
             form.textBox12.Text = card.purpose.ToString();
-            form.dataGridView1.Columns[3].Visible = false;
+            form.button1.Visible = false;
+            form.button2.Visible = true;
+            form.button3.Visible = false;
+            form.button5.Visible = false;
             form.Show();
         }
 
@@ -58,7 +68,7 @@ namespace pis
             if (Controller.SelectActCardToUpdate(idCard))
             {
                 var card = Controller.openCard(idCard);
-                Form4 form = new Form4();
+                Form4 form = new Form4(this);
                 form.comboBox1.Text = card.idMC.ToString();
                 form.textBox2.Text = card.datemc.ToShortDateString();
                 form.textBox3.Text = card.municipality.ToString();
@@ -72,9 +82,11 @@ namespace pis
                 form.dateTimePicker11.Value = card.date_trapping;
                 form.dateTimePicker11.Text = card.date_trapping.ToShortDateString();
                 form.textBox12.Text = card.purpose.ToString();
-                form.dataGridView1.Columns[3].Visible = false;
                 form.button1.Visible = true;
+                form.button2.Visible = false;
                 form.button3.Visible = true;
+                form.button5.Visible = false;
+                form.textBox6.ReadOnly = true;
                 form.Show();
             }
             else MessageBox.Show("Доступ отсутствует");
@@ -90,7 +102,8 @@ namespace pis
                 if (result == DialogResult.Yes)
                 {
                     Controller.DeleteActCard(idCard);
-                    dataGridView1.Rows.RemoveAt(index);
+                    //dataGridView1.Rows.RemoveAt(index);
+                    openRegistry(this);
                 }
             }
             else MessageBox.Show("Доступ отсутствует");
@@ -100,8 +113,9 @@ namespace pis
         {
             if (Controller.OpenNewActCard())
             {
-                Form4 form = new Form4();
-                form.dataGridView1.Columns[3].Visible = false;
+                Form4 form = new Form4(this);
+                form.button1.Visible = true;
+                form.button2.Visible = false;
                 form.button3.Visible = false;
                 form.button5.Visible = true;
                 form.Show();
@@ -117,6 +131,11 @@ namespace pis
                 idCards.Add(Convert.ToInt32(dataGridView1.Rows[0].Cells[5]));
             }
             Controller.ExportExcel(idCards.ToArray(), "");
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            form2.Show();
         }
     }
 }

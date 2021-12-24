@@ -9,20 +9,20 @@ namespace pis
 {
     class Card
     {
-        public int idCard;
         public int idMC;
         public DateTime datemc;
         public string municipality;
         public string localGovernmentBody;
         public string executor;
-        public int numberdog;
-        public int numbercat;
-        public int numberanimal;
+        public int idCard;
+        public int numberdog=0;
+        public int numbercat=0;
+        public int numberanimal=0;
         public string locality;
         public DateTime date_trapping;
         public string purpose;
         public static Dictionary<int, Card> cards;
-        public Card(List<string> data)
+        public Card(string[] data)
         {
             idMC = int.Parse(data[0]);
             datemc = Convert.ToDateTime(data[1]);
@@ -30,9 +30,9 @@ namespace pis
             localGovernmentBody = data[3];
             executor = data[4];
             idCard = int.Parse(data[5]);
-            numberdog = int.Parse(data[6]);
-            numbercat = int.Parse(data[7]);
-            numberanimal = int.Parse(data[8]);
+            if (data[6] != "") numberdog = int.Parse(data[6]);
+            if (data[7] != "") numbercat = int.Parse(data[7]);
+            if (data[8] != "") numberanimal = int.Parse(data[8]);
             locality = data[9];
             date_trapping = Convert.ToDateTime(data[10]).Date;
             purpose = data[11];
@@ -61,7 +61,7 @@ namespace pis
                 data.Add(result.GetValue(9).ToString());
                 data.Add(result.GetValue(10).ToString());
                 data.Add(result.GetValue(11).ToString());
-                cards.Add(int.Parse(data[5]), new Card(data));
+                cards.Add(int.Parse(data[5]), new Card(data.ToArray()));
             }
             Controller.connect.Close();
             return cards.Values.ToArray();
@@ -73,17 +73,65 @@ namespace pis
         }
         public static Card AddActCard(string[] actCardData)
         {
-            return null;
+            try
+            {
+                Controller.connect.Open();
+
+                string sql1 = @"insert into act_trapping values('" + actCardData[5] + "', '"
+                    + actCardData[6] + "', '" + actCardData[7] + "', '" + actCardData[8] + "', '" + actCardData[9]
+                    + "', '" + actCardData[10] + "', '" + actCardData[11] + "', '" + actCardData[0] + "')";
+                SqlCommand command = Controller.connect.CreateCommand();
+                command.CommandText = sql1;
+                command.ExecuteNonQuery();
+
+                Controller.connect.Close();
+
+                var card = new Card(actCardData);
+                return card;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static Card UpdateActCard(int idCard, string[] actCardData)
         {
-            return null;
+            try
+            {
+                Controller.connect.Open();
+
+                string sql1 = @"update act_trapping set numberdog='" + actCardData[6]
+                    + "', numbercat='" + actCardData[7] + "', numberanimal='" + actCardData[8]
+                    + "', locality='" + actCardData[9] + "', date_trapping='" + actCardData[10]
+                    + "', purpose='" + actCardData[11] + "', id_mc='" + actCardData[0]
+                    + "' where id_act='" + actCardData[5] + "'";
+                SqlCommand command = Controller.connect.CreateCommand();
+                command.CommandText = sql1;
+                command.ExecuteNonQuery();
+
+                Controller.connect.Close();
+
+                var card = new Card(actCardData);
+                return card;
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
-        public static void DeleteActCard(long idCard)
+        public static void DeleteActCard(int idCard)
         {
+            Controller.connect.Open();
 
+            string sql1 = @"delete from act_trapping where id_act='"+idCard+"'";
+            SqlCommand command = Controller.connect.CreateCommand();
+            command.CommandText = sql1;
+            command.ExecuteNonQuery();
+
+            Controller.connect.Close();
         }
 
         public static Card AddFile(int idCard, byte[] fileData)

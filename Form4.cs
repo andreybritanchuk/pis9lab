@@ -13,11 +13,12 @@ namespace pis
 {
     public partial class Form4 : Form
     {
-        public int index;
-        public Form4()
+        public Form3 form3;
+        public Form4(Form3 form)
         {
             InitializeComponent();
             comboBox1.Items.AddRange(GetValues("municipal_contract", "id_mc"));
+            form3 = form;
         }
 
         public string[] GetValues(string tableName, string columnName)
@@ -53,48 +54,62 @@ namespace pis
             actCardData.Add(textBox8.Text);
             actCardData.Add(textBox9.Text);
             actCardData.Add(textBox10.Text);
-            actCardData.Add(dateTimePicker11.Text);
+            actCardData.Add(dateTimePicker11.Value.ToShortDateString());
             actCardData.Add(textBox12.Text);
-            Controller.UpdateActCard(idCard, actCardData.ToArray());
-            if (MessageBox.Show("Изменения сохранены") == DialogResult.OK)
+
+
+            var card = Controller.UpdateActCard(idCard, actCardData.ToArray());
+            if (card != null)
             {
+                MessageBox.Show("Изменения сохранены");
                 Close();
+                Form3.openRegistry(form3);
             }
+            else MessageBox.Show("При добавлении карточки произошла ошибка");
         }
 
 
         private void button5_Click_1(object sender, EventArgs e) //добавление
         {
-            var idCard = Convert.ToInt32(textBox6.Text);
-
+            var idCard=0;
+            if (!int.TryParse(textBox6.Text, out idCard))
+            {
+                MessageBox.Show("Некорректный номер акта");
+                return;
+            }
             var actCardData = new List<string>();
-            actCardData.Add(comboBox1.Text);
+            actCardData.Add(comboBox1.Text); //код мк
             actCardData.Add(textBox2.Text);
             actCardData.Add(textBox3.Text);
             actCardData.Add(textBox4.Text);
             actCardData.Add(textBox5.Text);
-            actCardData.Add(textBox6.Text);
-            actCardData.Add(textBox7.Text);
-            actCardData.Add(textBox8.Text);
-            actCardData.Add(textBox9.Text);
-            actCardData.Add(textBox10.Text);
-            actCardData.Add(dateTimePicker11.Text);
-            actCardData.Add(textBox12.Text);
-            Controller.AddActCard(actCardData.ToArray());
+            actCardData.Add(textBox6.Text);//код акта
+            actCardData.Add(textBox7.Text); //кол-во собак
+            actCardData.Add(textBox8.Text); //кол-во кошек
+            actCardData.Add(textBox9.Text); //кол-во животных
+            actCardData.Add(textBox10.Text); //населённый пункт
+            actCardData.Add(dateTimePicker11.Value.ToShortDateString()); //дата отлова
+            actCardData.Add(textBox12.Text); //цель
 
             Controller.connect.Open();
 
             if (CheckId(idCard))
             {
-                Controller.AddActCard(actCardData.ToArray());
-                if (MessageBox.Show("Карточка добавлена") == DialogResult.OK)
+                Controller.connect.Close();
+                var card = Controller.AddActCard(actCardData.ToArray());
+                if (card != null)
                 {
+                    MessageBox.Show("Карточка добавлена");
                     Close();
+                    Form3.openRegistry(form3);
                 }
+                else MessageBox.Show("При добавлении карточки произошла ошибка");
             }
-            else MessageBox.Show("Акт с таким номером уже существует");
-
-            Controller.connect.Close();
+            else
+            {
+                Controller.connect.Close();
+                MessageBox.Show("Акт с таким номером уже существует");
+            } 
         }
 
         public bool CheckId(int idCard)
@@ -109,7 +124,7 @@ namespace pis
 
         private void button1_Click_1(object sender, EventArgs e) //загрузить файлы
         {
-            var idCard = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value);
+            var idCard = Convert.ToInt32(textBox6.Text);
             Controller.AddFile(idCard, new byte[0]);
         }
 
@@ -149,8 +164,6 @@ namespace pis
                 dataGridView1.Rows[1].Cells[0].Value = "0";
                 dataGridView1.Rows[1].Cells[1].Value = "Файл2";
                 dataGridView1.Rows[1].Cells[2].Value = dateTimePicker11.Value.ToShortDateString();
-
-                button2.Visible = true;
             }
 
             if (button3.Visible) //изменение
@@ -158,7 +171,9 @@ namespace pis
                 dataGridView1.Rows[0].Cells[3].Value = "Удалить";
                 dataGridView1.Rows[1].Cells[3].Value = "Удалить";
                 dataGridView1.Columns[3].DefaultCellStyle.ForeColor = Color.Red;
+                dataGridView1.Columns[3].Visible = true;
             }
+            else dataGridView1.Columns[3].Visible = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,6 +198,19 @@ namespace pis
         {
             var idCard = Convert.ToInt32(textBox6.Text);
             Controller.ExportWord(idCard, "");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //удалить файл
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == 3)
+            {
+                var idCard = Convert.ToInt32(textBox6.Text);
+                DialogResult result = MessageBox.Show("Удалить выбранный файл?", "Сообщение", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Controller.DeleteFile(idCard, 1);
+                }
+            }
         }
     }
 }

@@ -30,8 +30,9 @@ namespace pis
             {
                 Form2 form = new Form2();
                 form.role = user.role;
+                form.form1 = this;
                 Hide();
-                form.ShowDialog();
+                form.Show();
             }
             else MessageBox.Show("Неверный логин или пароль");
         }
