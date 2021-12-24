@@ -19,12 +19,12 @@ namespace pis
             form2 = form;
         }
 
-        private void Form3_Load(object sender, EventArgs e) //открытие реестра
+        private void Form3_Load(object sender, EventArgs e)
         {
             openRegistry(this);
         }
 
-        public static void openRegistry(Form3 form)
+        public static void openRegistry(Form3 form) //открытие реестра
         {
             form.dataGridView1.Rows.Clear();
             var cards = Controller.openRegistry();
@@ -60,6 +60,20 @@ namespace pis
             form.button3.Visible = false;
             form.button5.Visible = false;
             form.Show();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e) //добавить карточку
+        {
+            if (Controller.OpenNewActCard())
+            {
+                Form4 form = new Form4(this);
+                form.button1.Visible = true;
+                form.button2.Visible = false;
+                form.button3.Visible = false;
+                form.button5.Visible = true;
+                form.Show();
+            }
+            else MessageBox.Show("Доступ отсутствует");
         }
 
         private void button2_Click_1(object sender, EventArgs e) //изменить карточку
@@ -102,25 +116,16 @@ namespace pis
                 if (result == DialogResult.Yes)
                 {
                     Controller.DeleteActCard(idCard);
-                    //dataGridView1.Rows.RemoveAt(index);
                     openRegistry(this);
                 }
             }
             else MessageBox.Show("Доступ отсутствует");
         }
 
-        private void button4_Click_1(object sender, EventArgs e) //добавить карточку
+        private void button6_Click(object sender, EventArgs e) //фильтр
         {
-            if (Controller.OpenNewActCard())
-            {
-                Form4 form = new Form4(this);
-                form.button1.Visible = true;
-                form.button2.Visible = false;
-                form.button3.Visible = false;
-                form.button5.Visible = true;
-                form.Show();
-            }
-            else MessageBox.Show("Доступ отсутствует");
+            Form5 form = new Form5();
+            form.Show();
         }
 
         private void button7_Click(object sender, EventArgs e) //экспорт в Exel

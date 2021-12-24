@@ -15,12 +15,16 @@ namespace pis
         public Form5()
         {
             InitializeComponent();
-            listBox1.SelectionMode = SelectionMode.MultiSimple;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

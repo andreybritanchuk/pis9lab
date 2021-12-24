@@ -21,6 +21,30 @@ namespace pis
             form3 = form;
         }
 
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            dataGridView1.RowCount = 2;
+
+            if (!button5.Visible) // просмотр или изменение
+            {
+                dataGridView1.Rows[0].Cells[0].Value = "0";
+                dataGridView1.Rows[0].Cells[1].Value = "Файл1";
+                dataGridView1.Rows[0].Cells[2].Value = dateTimePicker11.Value.ToShortDateString();
+                dataGridView1.Rows[1].Cells[0].Value = "0";
+                dataGridView1.Rows[1].Cells[1].Value = "Файл2";
+                dataGridView1.Rows[1].Cells[2].Value = dateTimePicker11.Value.ToShortDateString();
+            }
+
+            if (button3.Visible) //изменение
+            {
+                dataGridView1.Rows[0].Cells[3].Value = "Удалить";
+                dataGridView1.Rows[1].Cells[3].Value = "Удалить";
+                dataGridView1.Columns[3].DefaultCellStyle.ForeColor = Color.Red;
+                dataGridView1.Columns[3].Visible = true;
+            }
+            else dataGridView1.Columns[3].Visible = false;
+        }
+
         public string[] GetValues(string tableName, string columnName)
         {
             Controller.connect.Open();
@@ -40,38 +64,9 @@ namespace pis
             return data.ToArray();
         }
 
-        private void button3_Click(object sender, EventArgs e) //изменение
-        {
-            var idCard = Convert.ToInt32(textBox6.Text);
-            var actCardData = new List<string>();
-            actCardData.Add(comboBox1.Text);
-            actCardData.Add(textBox2.Text);
-            actCardData.Add(textBox3.Text);
-            actCardData.Add(textBox4.Text);
-            actCardData.Add(textBox5.Text);
-            actCardData.Add(textBox6.Text);
-            actCardData.Add(textBox7.Text);
-            actCardData.Add(textBox8.Text);
-            actCardData.Add(textBox9.Text);
-            actCardData.Add(textBox10.Text);
-            actCardData.Add(dateTimePicker11.Value.ToShortDateString());
-            actCardData.Add(textBox12.Text);
-
-
-            var card = Controller.UpdateActCard(idCard, actCardData.ToArray());
-            if (card != null)
-            {
-                MessageBox.Show("Изменения сохранены");
-                Close();
-                Form3.openRegistry(form3);
-            }
-            else MessageBox.Show("При добавлении карточки произошла ошибка");
-        }
-
-
         private void button5_Click_1(object sender, EventArgs e) //добавление
         {
-            var idCard=0;
+            var idCard = 0;
             if (!int.TryParse(textBox6.Text, out idCard))
             {
                 MessageBox.Show("Некорректный номер акта");
@@ -109,12 +104,12 @@ namespace pis
             {
                 Controller.connect.Close();
                 MessageBox.Show("Акт с таким номером уже существует");
-            } 
+            }
         }
 
-        public bool CheckId(int idCard)
+        public bool CheckId(int idCard) //проверка id
         {
-            string sql1 = @"select* from act_trapping where id_act="+idCard;
+            string sql1 = @"select* from act_trapping where id_act=" + idCard;
             SqlCommand command = Controller.connect.CreateCommand();
             command.CommandText = sql1;
             SqlDataReader result = command.ExecuteReader();
@@ -122,10 +117,58 @@ namespace pis
             return true;
         }
 
+        private void button3_Click(object sender, EventArgs e) //изменение
+        {
+            var idCard = Convert.ToInt32(textBox6.Text);
+            var actCardData = new List<string>();
+            actCardData.Add(comboBox1.Text);
+            actCardData.Add(textBox2.Text);
+            actCardData.Add(textBox3.Text);
+            actCardData.Add(textBox4.Text);
+            actCardData.Add(textBox5.Text);
+            actCardData.Add(textBox6.Text);
+            actCardData.Add(textBox7.Text);
+            actCardData.Add(textBox8.Text);
+            actCardData.Add(textBox9.Text);
+            actCardData.Add(textBox10.Text);
+            actCardData.Add(dateTimePicker11.Value.ToShortDateString());
+            actCardData.Add(textBox12.Text);
+
+
+            var card = Controller.UpdateActCard(idCard, actCardData.ToArray());
+            if (card != null)
+            {
+                MessageBox.Show("Изменения сохранены");
+                Close();
+                Form3.openRegistry(form3);
+            }
+            else MessageBox.Show("При добавлении карточки произошла ошибка");
+        }
+
         private void button1_Click_1(object sender, EventArgs e) //загрузить файлы
         {
             var idCard = Convert.ToInt32(textBox6.Text);
             Controller.AddFile(idCard, new byte[0]);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //удалить файл
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == 3)
+            {
+                var idCard = Convert.ToInt32(textBox6.Text);
+                DialogResult result = MessageBox.Show("Удалить выбранный файл?", "Сообщение", 
+                    MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Controller.DeleteFile(idCard, 1);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e) //экспорт в Word
+        {
+            var idCard = Convert.ToInt32(textBox6.Text);
+            Controller.ExportWord(idCard, "");
         }
 
         private void button4_Click_1(object sender, EventArgs e) //закрыть
@@ -137,43 +180,6 @@ namespace pis
         {
             dataGridView1.ClearSelection();
             label13.Focus();
-        }
-
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = dataGridView1.Columns[e.ColumnIndex].Index;
-            if (i != 1 && i != 3)
-            {
-                dataGridView1.Cursor = Cursors.Default;
-            }
-            else
-            {
-                dataGridView1.Cursor = Cursors.Hand;
-            }
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-            dataGridView1.RowCount = 2;
-
-            if (!button5.Visible) // просмотр или изменение
-            {
-                dataGridView1.Rows[0].Cells[0].Value = "0";
-                dataGridView1.Rows[0].Cells[1].Value = "Файл1";
-                dataGridView1.Rows[0].Cells[2].Value = dateTimePicker11.Value.ToShortDateString();
-                dataGridView1.Rows[1].Cells[0].Value = "0";
-                dataGridView1.Rows[1].Cells[1].Value = "Файл2";
-                dataGridView1.Rows[1].Cells[2].Value = dateTimePicker11.Value.ToShortDateString();
-            }
-
-            if (button3.Visible) //изменение
-            {
-                dataGridView1.Rows[0].Cells[3].Value = "Удалить";
-                dataGridView1.Rows[1].Cells[3].Value = "Удалить";
-                dataGridView1.Columns[3].DefaultCellStyle.ForeColor = Color.Red;
-                dataGridView1.Columns[3].Visible = true;
-            }
-            else dataGridView1.Columns[3].Visible = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,25 +198,6 @@ namespace pis
                 textBox5.Text = result.GetValue(4).ToString();
             }
             Controller.connect.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e) //экспорт в Word
-        {
-            var idCard = Convert.ToInt32(textBox6.Text);
-            Controller.ExportWord(idCard, "");
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //удалить файл
-        {
-            if (dataGridView1.CurrentCell.ColumnIndex == 3)
-            {
-                var idCard = Convert.ToInt32(textBox6.Text);
-                DialogResult result = MessageBox.Show("Удалить выбранный файл?", "Сообщение", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    Controller.DeleteFile(idCard, 1);
-                }
-            }
         }
     }
 }
