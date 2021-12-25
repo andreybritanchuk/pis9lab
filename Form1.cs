@@ -20,7 +20,7 @@ namespace pis
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Server=(LocalDB)\MSSQLLocalDB; AttachDBFilename=C:\Users\user\source\repos\pis9lab2\Database1.mdf;" +
+            string connectionString = @"Server=(LocalDB)\MSSQLLocalDB; AttachDBFilename=|DataDirectory|\Database1.mdf;" +
                 "multipleactiveresultsets=True;";
             Controller.connect = new SqlConnection(connectionString);
 
