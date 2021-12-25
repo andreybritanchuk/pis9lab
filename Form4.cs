@@ -83,8 +83,13 @@ namespace pis
             actCardData.Add(textBox8.Text); //кол-во кошек
             actCardData.Add(textBox9.Text); //кол-во животных
             actCardData.Add(textBox10.Text); //населённый пункт
-            actCardData.Add(dateTimePicker11.Value.Year.ToString() + " " +
-                dateTimePicker11.Value.Month.ToString() + " " + dateTimePicker11.Value.Day.ToString()); //дата отлова
+            var year = dateTimePicker11.Value.Year.ToString();
+            var month = dateTimePicker11.Value.Month.ToString();
+            if (month.Length==1) month = "0"+month;
+            var day = dateTimePicker11.Value.Day.ToString();
+            if (day.Length == 1) day = "0" + day;
+            var date = year + ' ' + month + ' ' + day;
+            actCardData.Add(date); //дата отлова
             actCardData.Add(textBox12.Text); //цель
 
             Controller.connect.Open();
@@ -132,8 +137,13 @@ namespace pis
             actCardData.Add(textBox8.Text);
             actCardData.Add(textBox9.Text);
             actCardData.Add(textBox10.Text);
-            actCardData.Add(dateTimePicker11.Value.Year.ToString()+ " " +
-                dateTimePicker11.Value.Month.ToString()+ " " + dateTimePicker11.Value.Day.ToString());
+            var year = dateTimePicker11.Value.Year.ToString();
+            var month = dateTimePicker11.Value.Month.ToString();
+            if (month.Length == 1) month = "0" + month;
+            var day = dateTimePicker11.Value.Day.ToString();
+            if (day.Length == 1) day = "0" + day;
+            var date = year + ' ' + month + ' ' + day;
+            actCardData.Add(date);
             actCardData.Add(textBox12.Text);
 
 

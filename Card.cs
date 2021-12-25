@@ -82,27 +82,41 @@ namespace pis
         }
         public static Card AddActCard(string[] actCardData)
         {
-            try
-            {
-                Controller.connect.Open();
+            //try
+            //{
+            //    Controller.connect.Open();
 
-                string sql1 = @"insert into act_trapping values('" + actCardData[5] + "', '"
-                    + actCardData[6] + "', '" + actCardData[7] + "', '" + actCardData[8] + "', N'" + actCardData[9]
-                    + "', '" + actCardData[10].Split(' ')[0] + actCardData[10].Split(' ')[1]
-                    + actCardData[10].Split(' ')[2] + "', N'" + actCardData[11] + "', '" + actCardData[0] + "')";
-                SqlCommand command = Controller.connect.CreateCommand();
-                command.CommandText = sql1;
-                command.ExecuteNonQuery();
+            //    string sql1 = @"insert into act_trapping values('" + actCardData[5] + "', '"
+            //        + actCardData[6] + "', '" + actCardData[7] + "', '" + actCardData[8] + "', N'" + actCardData[9]
+            //        + "', '" + actCardData[10].Split(' ')[0] + actCardData[10].Split(' ')[1]
+            //        + actCardData[10].Split(' ')[2] + "', N'" + actCardData[11] + "', '" + actCardData[0] + "')";
+            //    SqlCommand command = Controller.connect.CreateCommand();
+            //    command.CommandText = sql1;
+            //    command.ExecuteNonQuery();
 
-                Controller.connect.Close();
+            //    Controller.connect.Close();
 
-                var card = new Card(actCardData);
-                return card;
-            }
-            catch
-            {
-                return null;
-            }
+            //    var card = new Card(actCardData);
+            //    return card;
+            //}
+            //catch
+            //{
+            //    return null;
+            //}
+            Controller.connect.Open();
+
+            string sql1 = @"insert into act_trapping values('" + actCardData[5] + "', '"
+                + actCardData[6] + "', '" + actCardData[7] + "', '" + actCardData[8] + "', N'" + actCardData[9]
+                + "', '" + actCardData[10].Split(' ')[0] + actCardData[10].Split(' ')[1]
+                + actCardData[10].Split(' ')[2] + "', N'" + actCardData[11] + "', '" + actCardData[0] + "')";
+            SqlCommand command = Controller.connect.CreateCommand();
+            command.CommandText = sql1;
+            command.ExecuteNonQuery();
+
+            Controller.connect.Close();
+
+            var card = new Card(actCardData);
+            return card;
         }
 
         public static Card UpdateActCard(int idCard, string[] actCardData)
