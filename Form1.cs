@@ -20,8 +20,7 @@ namespace pis
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source = DESKTOP-A8G14L1\\SQLEXPRESS;" +
-                "Initial Catalog = Реестр актов отлова; Integrated Security = True; " +
+            string connectionString = @"Server=(LocalDB)\MSSQLLocalDB; AttachDBFilename=C:\Users\user\source\repos\pis9lab2\Database1.mdf;" +
                 "multipleactiveresultsets=True;";
             Controller.connect = new SqlConnection(connectionString);
 

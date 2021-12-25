@@ -83,7 +83,8 @@ namespace pis
             actCardData.Add(textBox8.Text); //кол-во кошек
             actCardData.Add(textBox9.Text); //кол-во животных
             actCardData.Add(textBox10.Text); //населённый пункт
-            actCardData.Add(dateTimePicker11.Value.ToShortDateString()); //дата отлова
+            actCardData.Add(dateTimePicker11.Value.Year.ToString() + " " +
+                dateTimePicker11.Value.Month.ToString() + " " + dateTimePicker11.Value.Day.ToString()); //дата отлова
             actCardData.Add(textBox12.Text); //цель
 
             Controller.connect.Open();
@@ -131,7 +132,8 @@ namespace pis
             actCardData.Add(textBox8.Text);
             actCardData.Add(textBox9.Text);
             actCardData.Add(textBox10.Text);
-            actCardData.Add(dateTimePicker11.Value.ToShortDateString());
+            actCardData.Add(dateTimePicker11.Value.Year.ToString()+ " " +
+                dateTimePicker11.Value.Month.ToString()+ " " + dateTimePicker11.Value.Day.ToString());
             actCardData.Add(textBox12.Text);
 
 
@@ -142,7 +144,7 @@ namespace pis
                 Close();
                 Form3.openRegistry(form3);
             }
-            else MessageBox.Show("При добавлении карточки произошла ошибка");
+            else MessageBox.Show("При изменении карточки произошла ошибка");
         }
 
         private void button1_Click_1(object sender, EventArgs e) //загрузить файлы

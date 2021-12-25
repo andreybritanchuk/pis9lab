@@ -34,7 +34,16 @@ namespace pis
             if (data[7] != "") numbercat = int.Parse(data[7]);
             if (data[8] != "") numberanimal = int.Parse(data[8]);
             locality = data[9];
-            date_trapping = Convert.ToDateTime(data[10]).Date;
+            try
+            {
+                date_trapping = new DateTime(int.Parse(data[10].Split(' ')[0]),
+                int.Parse(data[10].Split(' ')[1]),
+                int.Parse(data[10].Split(' ')[2]));
+            }
+            catch
+            {
+                date_trapping = Convert.ToDateTime(data[10]);
+            }
             purpose = data[11];
         }
 
@@ -78,8 +87,9 @@ namespace pis
                 Controller.connect.Open();
 
                 string sql1 = @"insert into act_trapping values('" + actCardData[5] + "', '"
-                    + actCardData[6] + "', '" + actCardData[7] + "', '" + actCardData[8] + "', '" + actCardData[9]
-                    + "', '" + actCardData[10] + "', '" + actCardData[11] + "', '" + actCardData[0] + "')";
+                    + actCardData[6] + "', '" + actCardData[7] + "', '" + actCardData[8] + "', N'" + actCardData[9]
+                    + "', '" + actCardData[10].Split(' ')[0] + actCardData[10].Split(' ')[1]
+                    + actCardData[10].Split(' ')[2] + "', N'" + actCardData[11] + "', '" + actCardData[0] + "')";
                 SqlCommand command = Controller.connect.CreateCommand();
                 command.CommandText = sql1;
                 command.ExecuteNonQuery();
@@ -103,8 +113,9 @@ namespace pis
 
                 string sql1 = @"update act_trapping set numberdog='" + actCardData[6]
                     + "', numbercat='" + actCardData[7] + "', numberanimal='" + actCardData[8]
-                    + "', locality='" + actCardData[9] + "', date_trapping='" + actCardData[10]
-                    + "', purpose='" + actCardData[11] + "', id_mc='" + actCardData[0]
+                    + "', locality=N'" + actCardData[9] + "', date_trapping='" + actCardData[10].Split(' ')[0]
+                    + actCardData[10].Split(' ')[1] + actCardData[10].Split(' ')[2]
+                    + "', purpose=N'" + actCardData[11] + "', id_mc='" + actCardData[0]
                     + "' where id_act='" + actCardData[5] + "'";
                 SqlCommand command = Controller.connect.CreateCommand();
                 command.CommandText = sql1;
@@ -119,7 +130,6 @@ namespace pis
             {
                 return null;
             }
-            
         }
 
         public static void DeleteActCard(int idCard)
